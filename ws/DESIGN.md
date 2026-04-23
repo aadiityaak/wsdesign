@@ -46,7 +46,9 @@ What makes this design truly distinctive is the contrast between the highly stru
 - **Pure White** (`#ffffff`): Reserved for specific button surfaces and maximum-contrast elements.
 - **Warm Sand** (`#e8e6dc`): Button backgrounds and prominent interactive surfaces.
 - **Dark Surface** (`#30302e`): Dark-theme containers, nav borders, and elevated dark elements.
-- **Deep Dark** (`#141413`): Dark-theme page background and primary dark surface.
+- **Deep Dark** (`#141413`): Dark-theme text color and deep UI elements.
+
+> **Note:** The primary dark section background is **Brand Black (`#000000`)**, not Deep Dark or Dark Surface. Use `#000000` for all full-width dark sections.
 
 ### Neutrals & Text
 - **Charcoal Warm** (`#4d4c48`): Button text on light warm surfaces.
@@ -149,9 +151,10 @@ What makes this design truly distinctive is the contrast between the highly stru
 - Technical badges in uppercase Space Grotesk with 1px letter-spacing
 
 **Dark/Light Section Alternation**
-- The page alternates between Parchment light and Brand Navy (`#4C4C80`) dark sections
-- Space Grotesk pops exceptionally well against the navy background.
-- Dark cards use translucent white (`rgba(255, 255, 255, 0.05)`) with backdrop-filter blur for a modern glassmorphism effect over the navy background.
+- The page alternates between Parchment light (`#f5f4ed`) and **Brand Black (`#000000`)** dark sections.
+- Brand Navy (`#4C4C80`) may be used as a secondary container or accent surface within dark sections, but the primary dark background is always `#000000`.
+- Space Grotesk pops exceptionally well against the black background.
+- Dark cards use translucent white (`rgba(255, 255, 255, 0.05)`) with backdrop-filter blur for a modern glassmorphism effect over the dark background.
 
 **Solid Accents**
 - Hero text and prominent graphics utilize solid colors (Near Black or Brand Rose) for a clean, flat appearance without gradients.
