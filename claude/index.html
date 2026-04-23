@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude - A next-generation AI assistant</title>
+    <style>
+        /* CSS resets and base variables */
+        :root {
+            /* Surface & Background */
+            --parchment: #f5f4ed;
+            --ivory: #faf9f5;
+            --pure-white: #ffffff;
+            --warm-sand: #e8e6dc;
+            --dark-surface: #30302e;
+            --deep-dark: #141413;
+            
+            /* Primary */
+            --terracotta: #c96442;
+            --coral: #d97757;
+            
+            /* Neutrals & Text */
+            --near-black: #141413;
+            --charcoal-warm: #4d4c48;
+            --olive-gray: #5e5d59;
+            --stone-gray: #87867f;
+            --warm-silver: #b0aea5;
+            --dark-warm: #3d3d3a;
+            
+            /* Semantic & Accent */
+            --border-cream: #f0eee6;
+            --border-warm: #e8e6dc;
+            --border-dark: #30302e;
+            
+            --ring-warm: #d1cfc5;
+            
+            /* Typography */
+            --font-serif: "Anthropic Serif", Georgia, serif;
+            --font-sans: "Anthropic Sans", system-ui, -apple-system, sans-serif;
+            --font-mono: "Anthropic Mono", Consolas, monospace;
+        }
+
+        body {
+            background-color: var(--parchment);
+            color: var(--near-black);
+            font-family: var(--font-sans);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-serif);
+            font-weight: 500;
+            margin-top: 0;
+        }
+
+        h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 1.5rem; }
+        h2 { font-size: 3.25rem; line-height: 1.2; margin-bottom: 1rem; }
+        h3 { font-size: 2rem; line-height: 1.1; margin-bottom: 1rem; }
+        
+        p {
+            font-size: 1.06rem; /* 17px */
+            color: var(--olive-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .large-body {
+            font-size: 1.25rem; /* 20px */
+            color: var(--olive-gray);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--border-cream);
+            position: sticky;
+            top: 0;
+            background-color: var(--parchment);
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 500;
+            text-decoration: none;
+            color: var(--near-black);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-family: var(--font-sans);
+            font-size: 1.06rem;
+            color: var(--olive-gray);
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--near-black);
+        }
+
+        .nav-links .btn {
+            margin-left: 2rem;
+        }
+        .nav-links .btn + .btn {
+            margin-left: 1rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            font-family: var(--font-sans);
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--terracotta);
+            color: var(--ivory);
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 1rem;
+            box-shadow: 0 0 0 0 var(--terracotta), 0 0 0 1px var(--terracotta);
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 0 0 0 var(--terracotta), 0 0 0 2px var(--terracotta);
+            opacity: 0.95;
+        }
+
+        .btn-secondary {
+            background-color: var(--warm-sand);
+            color: var(--charcoal-warm);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-shadow: 0 0 0 0 var(--warm-sand), 0 0 0 1px var(--ring-warm);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 0 0 0 var(--warm-sand), 0 0 0 1px #b0aea5;
+        }
+
+        /* Layout & Sections */
+        section {
+            padding: 100px 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .hero {
+            text-align: center;
+            padding-top: 120px;
+            padding-bottom: 80px;
+        }
+
+        .hero h1 {
+            max-width: 800px;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: 0 auto 2.5rem auto;
+        }
+
+        .dark-section {
+            background-color: var(--deep-dark);
+            color: var(--ivory);
+        }
+
+        .dark-section h2 {
+            color: var(--ivory);
+        }
+
+        .dark-section p {
+            color: var(--warm-silver);
+        }
+
+        /* Cards & Grids */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .card {
+            background-color: var(--ivory);
+            border: 1px solid var(--border-cream);
+            border-radius: 8px;
+            padding: 32px;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 24px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 0 1px var(--ring-warm), rgba(0, 0, 0, 0.05) 0px 8px 32px;
+        }
+
+        .card-dark {
+            background-color: var(--dark-surface);
+            border-color: var(--border-dark);
+            color: var(--ivory);
+        }
+
+        .card-dark h3 {
+            color: var(--ivory);
+        }
+
+        .card-dark p {
+            color: var(--warm-silver);
+        }
+
+        .card-dark:hover {
+            box-shadow: 0 0 0 1px #4a4a47, rgba(0, 0, 0, 0.1) 0px 8px 32px;
+        }
+        
+        .badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            letter-spacing: 0.12px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            background-color: var(--warm-sand);
+            color: var(--charcoal-warm);
+            margin-bottom: 1rem;
+        }
+
+        .badge-dark {
+            background-color: var(--deep-dark);
+            color: var(--warm-silver);
+        }
+
+        /* Two Column Layout */
+        .split-layout {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .split-content {
+            flex: 1;
+        }
+
+        .split-media {
+            flex: 1;
+            background-color: var(--ivory);
+            border-radius: 32px;
+            padding: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid var(--border-cream);
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 24px;
+        }
+
+        .illustration-placeholder {
+            width: 240px;
+            height: 240px;
+            background-color: var(--parchment);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-warm);
+        }
+
+        .illustration-placeholder span {
+            color: var(--terracotta);
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            .split-layout { flex-direction: column; }
+            .nav-links a { display: none; }
+            .nav-links .btn { display: inline-block; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">Claude</a>
+        <div class="nav-links">
+            <a href="#">Capabilities</a>
+            <a href="#">API</a>
+            <a href="#">Research</a>
+            <a href="#" class="btn btn-secondary">Log in</a>
+            <a href="#" class="btn btn-primary">Try Claude</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>A next-generation AI assistant for your tasks, no matter the scale.</h1>
+            <p class="large-body">Meet Claude, your new intellectual partner. Thoughtful, secure, and ready to help you navigate complex challenges with ease.</p>
+            <div>
+                <a href="#" class="btn btn-primary">Talk to Claude</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="dark-section">
+        <div class="container">
+            <div style="max-width: 800px;">
+                <h2>The right model for every task</h2>
+                <p class="large-body">Our family of models gives you the exact balance of intelligence, speed, and cost you need.</p>
+            </div>
+            
+            <div class="grid">
+                <div class="card card-dark">
+                    <span class="badge badge-dark">Opus</span>
+                    <h3>Claude 3.5 Opus</h3>
+                    <p>Our most powerful model, delivering state-of-the-art performance on highly complex tasks and demonstrating fluency and human-like understanding.</p>
+                </div>
+                <div class="card card-dark">
+                    <span class="badge badge-dark">Sonnet</span>
+                    <h3>Claude 3.5 Sonnet</h3>
+                    <p>The ideal balance of intelligence and speed, designed to be the workhorse model for enterprise workloads and scaled deployments.</p>
+                </div>
+                <div class="card card-dark">
+                    <span class="badge badge-dark">Haiku</span>
+                    <h3>Claude 3.5 Haiku</h3>
+                    <p>Our fastest, most compact model for near-instant responsiveness and seamless AI experiences that mimic human interactions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container split-layout">
+            <div class="split-content">
+                <h2>Trust at the core</h2>
+                <p>We believe that AI must be safe, transparent, and aligned with human values. Claude is built from the ground up to be a helpful, harmless, and honest assistant.</p>
+                <p>With Constitutional AI, we train our models to follow a set of principles, reducing the risk of harmful outputs and ensuring a secure experience for you and your users.</p>
+                <a href="#" class="btn btn-secondary" style="margin-top: 1rem;">Read our research</a>
+            </div>
+            <div class="split-media">
+                <div class="illustration-placeholder">
+                    <span>Constitutional AI</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
