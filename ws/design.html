@@ -501,6 +501,36 @@
             opacity: 0.9;
         }
 
+        /* Style Guide Layout */
+        .sg-layout { display: flex; min-height: 100vh; }
+        .sg-sidebar { width: 250px; background-color: var(--ivory); border-right: 1px solid var(--border-cream); padding: 2rem; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
+        .sg-sidebar h3 { font-size: 1.25rem; margin-bottom: 1.5rem; }
+        .sg-sidebar a { display: block; color: var(--olive-gray); text-decoration: none; margin-bottom: 1rem; font-family: var(--font-heading); transition: color 0.2s; }
+        .sg-sidebar a:hover { color: var(--brand-rose); }
+        .sg-main { flex: 1; padding: 4rem; background-color: var(--parchment); }
+        .sg-section { margin-bottom: 5rem; padding-bottom: 4rem; border-bottom: 1px solid var(--border-cream); }
+        .sg-section:last-child { border-bottom: none; }
+        .sg-title { margin-bottom: 3rem; color: var(--near-black); }
+        
+        /* Forms */
+        .form-group { margin-bottom: 1.5rem; }
+        .form-label { display: block; font-family: var(--font-heading); font-weight: 500; margin-bottom: 0.5rem; color: var(--near-black); }
+        .form-control { width: 100%; padding: 12px 16px; border: 1px solid var(--border-warm); border-radius: 8px; background-color: var(--pure-white); font-family: var(--font-body); font-size: 1rem; color: var(--near-black); transition: all 0.2s; box-sizing: border-box; }
+        .form-control:focus { outline: none; border-color: #3898ec; box-shadow: 0 0 0 3px rgba(56, 152, 236, 0.2); }
+        .form-control.error { border-color: #b53333; }
+        .form-control.error:focus { box-shadow: 0 0 0 3px rgba(181, 51, 51, 0.2); }
+
+        /* Button States additions */
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; box-shadow: none !important; }
+        .btn-outline { background-color: transparent; color: var(--near-black); padding: 12px 24px; border-radius: 12px; font-size: 1rem; border: 1px solid var(--border-dark); box-shadow: none; }
+        .btn-outline:hover { background-color: rgba(0,0,0,0.05); }
+
+        /* Alerts */
+        .alert { padding: 16px 20px; border-radius: 8px; margin-bottom: 1rem; font-family: var(--font-body); display: flex; align-items: center; gap: 12px; }
+        .alert-success { background-color: #eaf5eb; color: #236c2a; border: 1px solid #c2e2c5; }
+        .alert-error { background-color: #fcebeb; color: #b53333; border: 1px solid #f2c7c7; }
+        .alert-warning { background-color: #fff8e6; color: #b37700; border: 1px solid #ffe8ab; }
+        .alert-info { background-color: #ebf5fc; color: #1e5c99; border: 1px solid #c7e0f2; }
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
             h2 { font-size: 2rem; }
@@ -511,208 +541,137 @@
     </style>
 </head>
 <body>
+    <div class="sg-layout">
+        <aside class="sg-sidebar">
+            <a href="#" class="logo" style="margin-bottom: 3rem; display: block;">WS Style Guide</a>
+            <h3>Components</h3>
+            <a href="#typography">Typography</a>
+            <a href="#colors">Color Palette</a>
+            <a href="#buttons">Buttons & States</a>
+            <a href="#forms">Form Elements</a>
+            <a href="#alerts">Alerts & Feedback</a>
+            <a href="#elevation">Elevation & Cards</a>
+        </aside>
 
-    <nav>
-        <a href="#" class="logo">WS Platform</a>
-        <div class="nav-links">
-            <a href="#">Solutions</a>
-            <a href="#">Documentation</a>
-            <a href="#">Pricing</a>
-            <a href="#" class="btn btn-secondary">Log in</a>
-            <a href="#" class="btn btn-primary">Get Started</a>
-        </div>
-    </nav>
-
-    <section class="hero">
-        <div class="container">
-            <h1>Structured intelligence for modern technical teams.</h1>
-            <p class="large-body">Experience an integrated platform that balances precise geometric workflows with approachable, human-centered design principles.</p>
-            <div>
-                <a href="#" class="btn btn-primary">Start Building</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="dark-section">
-        <div class="container">
-            <div style="max-width: 800px;">
-                <h2>Tools built for scale</h2>
-                <p class="large-body" style="font-family: var(--font-body); font-weight: 400;">Deploy scalable architecture with components designed for performance, readability, and aesthetic warmth.</p>
-            </div>
-            
-            <div class="grid">
-                <div class="card card-dark">
-                    <span class="badge badge-dark">Data Engine</span>
-                    <h3>High-Performance Analytics</h3>
-                    <p>Process millions of data points instantly with our optimized backend architecture. Designed to handle intense throughput without losing stability.</p>
+        <main class="sg-main">
+            <section id="typography" class="sg-section" style="padding: 0; margin-bottom: 4rem; justify-content: flex-start; display: block;">
+                <h2 class="sg-title">1. Typography</h2>
+                <div style="background: var(--ivory); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-cream);">
+                    <h1>Heading 1 (64px)</h1>
+                    <h2>Heading 2 (52px)</h2>
+                    <h3>Heading 3 (32px)</h3>
+                    <h4>Heading 4 (24px)</h4>
+                    <p class="large-body">Large Body (20px) - Space Grotesk. Used for intro text.</p>
+                    <p>Standard Body (16px) - Poppins. Used for dense reading paragraphs. The quick brown fox jumps over the lazy dog.</p>
                 </div>
-                <div class="card card-dark">
-                    <span class="badge badge-dark">Secure Auth</span>
-                    <h3>Enterprise Security</h3>
-                    <p>Robust authorization protocols and role-based access control integrated deeply into every component of the platform.</p>
-                </div>
-                <div class="card card-dark">
-                    <span class="badge badge-dark">Real-Time</span>
-                    <h3>Instant Syncing</h3>
-                    <p>Maintain state across all client applications globally with single-digit millisecond latency via our edge network.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <section>
-        <div class="container split-layout">
-            <div class="split-content">
-                <h2>Design meets engineering</h2>
-                <p>We reject the notion that powerful tools must be difficult to use or visually unappealing. By pairing robust engineering with careful typographic and color choices, we've built a system you'll actually enjoy using.</p>
-                <p>Our integration of Space Grotesk against a warm palette creates an environment that feels technical without feeling sterile—the perfect balance for focused, creative work.</p>
-                <a href="#" class="btn btn-secondary" style="margin-top: 1rem;">View Component Library</a>
-            </div>
-            <div class="split-media">
-                <div class="illustration-placeholder">
-                    <span>Architecture</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="pricing-section">
-        <div class="container">
-            <h2 style="text-align: center;">Pricelist</h2>
-            <p class="large-body" style="text-align: center; max-width: 600px; margin: 0 auto;">Pilih paket yang sesuai dengan kebutuhan dan anggaran bisnis Anda.</p>
-            
-            <div class="pricing-grid">
-                <!-- UMKM -->
-                <div class="pricing-card navy">
-                    <div class="pricing-card-content">
-                        <h3>Paket A</h3>
-                        <div class="pricing-box">
-                            <span class="price-main">Rp 600K</span>
-                            <span class="price-strike">Rp 650K</span>
-                        </div>
-                        <ul class="pricing-features">
-                            <li>
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Hosting 0.5GB
-                            </li>
-                            <li>
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Free Domain .com
-                            </li>
-                            <li>
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Free Support & Maintenance
-                            </li>
-                            <li>
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                10+ Pilihan Desain
-                            </li>
-                        </ul>
-                        <button class="btn-pricing">Pilihan Desain</button>
+            <section id="colors" class="sg-section" style="padding: 0; margin-bottom: 4rem; justify-content: flex-start; display: block;">
+                <h2 class="sg-title">2. Color Palette</h2>
+                <div class="swatch-grid" style="justify-content: flex-start;">
+                    <div class="swatch-item">
+                        <div class="swatch-circle" style="background-color: var(--brand-black); border-color: var(--brand-black);"></div>
+                        <span class="swatch-label">Brand Black</span>
+                    </div>
+                    <div class="swatch-item">
+                        <div class="swatch-circle" style="background-color: var(--brand-navy); border-color: var(--brand-navy);"></div>
+                        <span class="swatch-label">Brand Navy</span>
+                    </div>
+                    <div class="swatch-item">
+                        <div class="swatch-circle" style="background-color: var(--brand-rose); border-color: var(--brand-rose);"></div>
+                        <span class="swatch-label">Brand Rose</span>
+                    </div>
+                    <div class="swatch-item">
+                        <div class="swatch-circle" style="background-color: var(--brand-orange); border-color: var(--brand-orange);"></div>
+                        <span class="swatch-label">Brand Orange</span>
+                    </div>
+                    <div class="swatch-item">
+                        <div class="swatch-circle" style="background-color: var(--parchment);"></div>
+                        <span class="swatch-label">Parchment</span>
+                    </div>
+                    <div class="swatch-item">
+                        <div class="swatch-circle" style="background-color: var(--ivory);"></div>
+                        <span class="swatch-label">Ivory</span>
                     </div>
                 </div>
+            </section>
 
-                <!-- INSTANT -->
-                <div class="pricing-card orange">
-                    <div class="pricing-card-content">
-                        <h3>Paket B</h3>
-                        <div class="pricing-box">
-                            <span class="price-main">Rp 750K</span>
-                            <span class="price-strike">Rp 990K</span>
-                        </div>
-                        <ul class="pricing-features">
-                            <li>
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Hosting 1GB
-                            </li>
-                            <li>
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Free Domain .com
-                            </li>
-                            <li>
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Free Support & Maintenance
-                            </li>
-                            <li>
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                50+ Pilihan Desain
-                            </li>
-                        </ul>
-                        <button class="btn-pricing">Pilihan Desain</button>
+            <section id="buttons" class="sg-section" style="padding: 0; margin-bottom: 4rem; justify-content: flex-start; display: block;">
+                <h2 class="sg-title">3. Buttons & States</h2>
+                <div style="display: flex; gap: 24px; flex-wrap: wrap; background: var(--ivory); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-cream);">
+                    <div>
+                        <p style="margin-bottom: 8px;"><strong>Primary</strong></p>
+                        <button class="btn btn-primary">Get Started</button>
+                    </div>
+                    <div>
+                        <p style="margin-bottom: 8px;"><strong>Secondary</strong></p>
+                        <button class="btn btn-secondary">Learn More</button>
+                    </div>
+                    <div>
+                        <p style="margin-bottom: 8px;"><strong>Outline</strong></p>
+                        <button class="btn btn-outline">Cancel</button>
+                    </div>
+                    <div>
+                        <p style="margin-bottom: 8px;"><strong>Disabled</strong></p>
+                        <button class="btn btn-primary" disabled>Submit</button>
                     </div>
                 </div>
+            </section>
 
-                <!-- CUSTOM -->
-                <div class="pricing-card rose">
-                    <div class="pricing-card-content">
-                        <h3>Paket C</h3>
-                        <div class="pricing-box">
-                            <span class="price-main">Rp 1450K</span>
-                        </div>
-                        <ul class="pricing-features">
-                            <li>
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Hosting 1GB
-                            </li>
-                            <li>
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Free Domain .com
-                            </li>
-                            <li>
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Free Support & Maintenance
-                            </li>
-                            <li>
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Custom Desain
-                            </li>
-                        </ul>
-                        <button class="btn-pricing">Pilihan Desain</button>
+            <section id="forms" class="sg-section" style="padding: 0; margin-bottom: 4rem; justify-content: flex-start; display: block;">
+                <h2 class="sg-title">4. Form Elements</h2>
+                <div style="background: var(--ivory); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-cream); max-width: 500px;">
+                    <div class="form-group">
+                        <label class="form-label">Email Address (Default)</label>
+                        <input type="email" class="form-control" placeholder="hello@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password (Error State)</label>
+                        <input type="password" class="form-control error" value="wrongpassword">
+                        <p style="color: #b53333; font-size: 0.875rem; margin-top: 4px;">Password is incorrect.</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <section style="background-color: var(--ivory); border-top: 1px solid var(--border-cream);">
-        <div class="container">
-            <h2 style="text-align: center;">Color Palette</h2>
-            <p class="large-body" style="text-align: center;">The core colors that define our technical yet warm visual identity.</p>
-            
-            <div class="swatch-grid" style="margin-top: 60px;">
-                <div class="swatch-item">
-                    <div class="swatch-circle" style="background-color: var(--brand-black); border-color: var(--brand-black);"></div>
-                    <span class="swatch-label">Brand Black</span>
-                    <span class="badge" style="background-color: rgba(0, 0, 0, 0.1); color: var(--brand-black);">#000000</span>
+            <section id="alerts" class="sg-section" style="padding: 0; margin-bottom: 4rem; justify-content: flex-start; display: block;">
+                <h2 class="sg-title">5. Alerts & Feedback</h2>
+                <div style="max-width: 600px;">
+                    <div class="alert alert-success">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        Your changes have been saved successfully.
+                    </div>
+                    <div class="alert alert-error">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        Failed to process the payment. Please try again.
+                    </div>
+                    <div class="alert alert-warning">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                        Your trial is expiring in 3 days.
+                    </div>
+                    <div class="alert alert-info">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        New features have been added to your dashboard.
+                    </div>
                 </div>
-                <div class="swatch-item">
-                    <div class="swatch-circle" style="background-color: var(--brand-navy); border-color: var(--brand-navy);"></div>
-                    <span class="swatch-label">Brand Navy</span>
-                    <span class="badge" style="background-color: rgba(76, 76, 128, 0.1); color: var(--brand-navy);">#4C4C80</span>
-                </div>
-                <div class="swatch-item">
-                    <div class="swatch-circle" style="background-color: var(--brand-rose); border-color: var(--brand-rose);"></div>
-                    <span class="swatch-label">Brand Rose</span>
-                    <span class="badge" style="background-color: rgba(225, 29, 72, 0.1); color: var(--brand-rose);">#E11D48</span>
-                </div>
-                <div class="swatch-item">
-                    <div class="swatch-circle" style="background-color: var(--brand-orange); border-color: var(--brand-orange);"></div>
-                    <span class="swatch-label">Brand Orange</span>
-                    <span class="badge" style="background-color: rgba(249, 115, 22, 0.1); color: var(--brand-orange);">#F97316</span>
-                </div>
-                <div class="swatch-item">
-                    <div class="swatch-circle" style="background-color: var(--near-black); border-color: var(--near-black);"></div>
-                    <span class="swatch-label">Near Black</span>
-                    <span class="badge" style="background-color: rgba(20, 20, 19, 0.1); color: var(--near-black);">#141413</span>
-                </div>
-                <div class="swatch-item">
-                    <div class="swatch-circle" style="background-color: var(--parchment);"></div>
-                    <span class="swatch-label">Parchment</span>
-                    <span class="badge">#F5F4ED</span>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
+            <section id="elevation" class="sg-section" style="padding: 0; margin-bottom: 4rem; justify-content: flex-start; display: block;">
+                <h2 class="sg-title">6. Elevation & Cards</h2>
+                <div class="grid" style="margin-top: 0;">
+                    <div class="card" style="box-shadow: none;">
+                        <span class="badge">Level 0</span>
+                        <h3>Flat Card</h3>
+                        <p>No shadow, just a subtle border. Used for standard inline content.</p>
+                    </div>
+                    <div class="card" style="box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 24px;">
+                        <span class="badge">Level 1</span>
+                        <h3>Elevated Card</h3>
+                        <p>Subtle shadow for interactive items or important segments.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
 </body>
+
 </html>

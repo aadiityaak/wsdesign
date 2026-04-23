@@ -19,10 +19,22 @@ What makes this design truly distinctive is the contrast between the highly stru
 
 ## 2. Color Palette & Roles
 
+| Color | Name | Hex Code | Role |
+| :---: | :--- | :--- | :--- |
+| ⬛ | **Brand Black** | `#000000` | Primary Dark Surface |
+| 🟪 | **Brand Navy** | `#4C4C80` | Secondary Dark Surface / Accents |
+| 🟥 | **Brand Rose** | `#E11D48` | Primary CTA & Gradient Accent |
+| 🟧 | **Brand Orange** | `#F97316` | Secondary Gradient Accent |
+| 🟨 | **Parchment** | `#f5f4ed` | Primary Light Canvas |
+| ⬜ | **Ivory** | `#faf9f5` | Light Surface Canvas |
+| ⬛ | **Near Black** | `#141413` | Primary Text |
+
 ### Primary
-- **Warm Near Black** (`#141413`): The primary text color and dark-theme surface — not pure black but a warm, almost olive-tinted dark that's gentler on the eyes.
-- **Terracotta Brand** (`#c96442`): The core brand color — a burnt orange-brown used for primary CTA buttons, brand moments, and the signature accent. Deliberately earthy.
-- **Coral Accent** (`#d97757`): A lighter, warmer variant of the brand color used for text accents, links on dark surfaces, and secondary emphasis.
+- **Warm Near Black** (`#141413`): The primary text color.
+- **Brand Black** (`#000000`): The primary dark section background. It provides maximum contrast against the vibrant gradients.
+- **Brand Navy** (`#4C4C80`): Secondary dark elements and accents.
+- **Brand Rose** (`#E11D48`): A vibrant primary CTA and accent color. Used prominently in gradients.
+- **Brand Orange** (`#F97316`): A vibrant secondary accent. Frequently paired with Brand Rose to create striking gradients.
 
 ### Secondary & Accent
 - **Error Crimson** (`#b53333`): A deep, warm red for error states — serious without being alarming.
@@ -55,7 +67,7 @@ What makes this design truly distinctive is the contrast between the highly stru
 
 ### Font Family
 - **Headline / Prominent UI**: `Space Grotesk`, with fallback: `system-ui, sans-serif`
-- **Body Standard**: `Inter` (or similar clean sans-serif), with fallback: `system-ui, sans-serif`
+- **Body Standard**: `Poppins` (or similar geometric sans-serif), with fallback: `system-ui, sans-serif`
 - **Code**: `Space Mono`, with fallback: `monospace`
 
 *Note: Space Grotesk is a Google Font (https://fonts.google.com/specimen/Space+Grotesk). It gives the warm palette a modern, tech-focused edge.*
@@ -70,15 +82,15 @@ What makes this design truly distinctive is the contrast between the highly stru
 | Sub-heading | Space Grotesk | 32px (2rem) | 500 | 1.20 | normal | Card titles, feature names |
 | Sub-heading Small | Space Grotesk | 24px (1.5rem) | 500 | 1.30 | normal | Smaller section titles |
 | Body Large | Space Grotesk | 20px (1.25rem) | 400 | 1.60 | normal | Intro paragraphs, impactful text |
-| Body Standard | Inter | 16px (1rem) | 400 | 1.60 | normal | Dense reading paragraphs |
+| Body Standard | Poppins | 16px (1rem) | 400 | 1.60 | normal | Dense reading paragraphs |
 | Nav / Buttons | Space Grotesk | 16px (1rem) | 500 | 1.00–1.20 | 0.5px | Navigation links, primary UI |
-| Body Small | Inter | 14px (0.88rem) | 400 | 1.50 | normal | Compact body text |
+| Body Small | Poppins | 14px (0.88rem) | 400 | 1.50 | normal | Compact body text |
 | Label | Space Grotesk | 12px (0.75rem) | 600 | 1.20 | 1px | Badges, small upper-case labels |
 | Overline | Space Grotesk | 11px (0.68rem) | 600 | 1.40 | 1.5px | Uppercase overline labels |
 | Code | Space Mono | 15px (0.94rem) | 400 | 1.60 | normal | Inline code, terminal |
 
 ### Principles
-- **Geometric quirks for personality, clean sans for dense utility**: Space Grotesk carries all headline content and prominent UI elements (buttons, nav, badges). Its structured, mono-derived letterforms contrast beautifully with the warm, soft colors. Inter or a standard system sans is used for standard body text to ensure maximum readability in dense paragraphs.
+- **Geometric quirks for personality, clean sans for dense utility**: Space Grotesk carries all headline content and prominent UI elements (buttons, nav, badges). Its structured, mono-derived letterforms contrast beautifully with the warm, soft colors. Poppins is used for standard body text, providing a highly readable geometric sans-serif that complements Space Grotesk perfectly.
 - **Slight negative tracking on large headings**: Space Grotesk looks incredibly modern when tightly tracked (-1px to -0.5px) at large display sizes (52px+).
 - **Expanded tracking on small labels**: Badges and overlines use uppercase Space Grotesk with generous letter-spacing (1px to 1.5px) for a technical, precise look.
 - **Tight-but-not-compressed headings**: Line-heights of 1.10–1.30 for headings keep the geometric shapes neatly stacked.
@@ -101,12 +113,12 @@ What makes this design truly distinctive is the contrast between the highly stru
 - Radius: generously rounded (12px)
 - Hover: shifts to secondary background color
 
-**Brand Terracotta**
-- Background: Terracotta Brand (`#c96442`)
-- Text: Ivory (`#faf9f5`), Space Grotesk, 500 weight
+**Brand Solid (Primary)**
+- Background: Brand Rose (`#E11D48`)
+- Text: Pure White (`#ffffff`), Space Grotesk, 500 weight
 - Radius: 8–12px
-- Shadow: ring-based (`#c96442 0px 0px 0px 0px, #c96442 0px 0px 0px 1px`)
-- The primary CTA — the only button with chromatic color
+- Shadow: `0 4px 14px rgba(225, 29, 72, 0.4)`
+- The primary CTA — vibrant, unmissable, and modern
 
 **Dark Primary**
 - Background: Warm Near Black (`#141413`)
@@ -137,8 +149,12 @@ What makes this design truly distinctive is the contrast between the highly stru
 - Technical badges in uppercase Space Grotesk with 1px letter-spacing
 
 **Dark/Light Section Alternation**
-- The page alternates between Parchment light and Near Black dark sections
-- Space Grotesk pops exceptionally well against the dark backgrounds, giving a terminal/code-editor aesthetic that feels premium.
+- The page alternates between Parchment light and Brand Navy (`#4C4C80`) dark sections
+- Space Grotesk pops exceptionally well against the navy background.
+- Dark cards use translucent white (`rgba(255, 255, 255, 0.05)`) with backdrop-filter blur for a modern glassmorphism effect over the navy background.
+
+**Solid Accents**
+- Hero text and prominent graphics utilize solid colors (Near Black or Brand Rose) for a clean, flat appearance without gradients.
 
 ## 5. Layout Principles
 
@@ -184,7 +200,8 @@ What makes this design truly distinctive is the contrast between the highly stru
 ## 8. Agent Prompt Guide
 
 ### Quick Color Reference
-- Brand CTA: "Terracotta Brand (#c96442)"
+- Brand CTA / Accent: "Brand Rose (#E11D48)" & "Brand Orange (#F97316)"
+- Dark Section Background: "Brand Navy (#4C4C80)"
 - Page Background: "Parchment (#f5f4ed)"
 - Card Surface: "Ivory (#faf9f5)"
 - Primary Text: "Warm Near Black (#141413)"
@@ -192,5 +209,33 @@ What makes this design truly distinctive is the contrast between the highly stru
 
 ### Example Component Prompts
 - "Create a hero section on Parchment (#f5f4ed) with a headline at 64px Space Grotesk weight 600, line-height 1.10, letter-spacing -1px. Use Warm Near Black (#141413) text. Add a subtitle in Olive Gray (#5e5d59) at 20px Space Grotesk with 1.60 line-height."
-- "Design a feature card on Ivory (#faf9f5) with a 1px solid Border Cream (#f0eee6) border and comfortably rounded corners (8px). Title in Space Grotesk at 24px weight 500, description in Olive Gray (#5e5d59) at 16px Inter. Add a whisper shadow (rgba(0,0,0,0.05) 0px 4px 24px)."
-- "Create a badge element using Space Grotesk at 12px weight 600, uppercase, with 1px letter-spacing. Background Warm Sand (#e8e6dc), text Charcoal Warm (#4d4c48)."
+- "Design a feature card on Ivory (#faf9f5) with a 1px solid Border Cream (#f0eee6) border and comfortably rounded corners (8px). Title in Space Grotesk at 24px weight 500, description in Olive Gray (#5e5d59) at 16px Poppins. Add a whisper shadow (rgba(0,0,0,0.05) 0px 4px 24px)."
+
+## 9. Graphic Standards Manual (GSM) Supplement
+
+### Logo Usage & Clear Space
+- **Clear Space**: Maintain a minimum clear space around the logo equal to the height of the capital "W" in the WS logo mark. No other graphical elements or text should enter this zone.
+- **Minimum Size**: Do not reproduce the logo smaller than `24px` in height for digital use to preserve legibility.
+- **Color Restrictions**: The logo must only appear in Warm Near Black (`#141413`) on light backgrounds, or Ivory (`#faf9f5`) on dark backgrounds. Do not apply gradients or outlines to the core logo mark.
+- **Aspect Ratio**: Never stretch, skew, or distort the logo proportions.
+
+### Grid System & Breakpoints
+- **Desktop Grid**: 12-column flexible grid with a maximum container width of `1200px` and a minimum `24px` gutter between columns. Margin is automatic to center the container.
+- **Tablet Grid (max-width: 1024px)**: 8-column flexible grid. Gutter shrinks to `16px`. Container padding `2rem` on both sides.
+- **Mobile Grid (max-width: 768px)**: 4-column flexible grid. Container padding `1rem` on both sides. Stack all flex/grid elements vertically by default.
+
+### Brand Voice & Tone
+- **Tone**: Technical, clear, structured, but fundamentally warm and human-centric.
+- **Voice**: We speak as experts who build tools for other experts. We avoid corporate jargon ("synergize", "leverage") and prefer straightforward, engineering-focused terminology.
+- **Formatting**: Use Title Case for UI buttons and primary headings. Use sentence case for subheadings and body copy.
+
+### Iconography Guidelines
+- **Style**: Line icons only (never solid/filled unless denoting an active state in a navigation bar).
+- **Weight**: 2px constant stroke width (`stroke-width="2"`).
+- **Radius**: Soft, rounded caps and joins (`stroke-linecap="round" stroke-linejoin="round"`) to align with the warm aesthetic.
+- **Sizing**: Standard inline icons must be exactly `24x24px`. Smaller descriptive list icons can scale to `18x18px`.
+
+### Animation & Transitions
+- **Interaction Duration**: Standard hover states (buttons, links, cards) use a `200ms` duration (`transition: all 0.2s ease`).
+- **Easing**: Use the standard browser `ease` curve (equivalent to `cubic-bezier(0.25, 0.1, 0.25, 1)`) for snappy, responsive feedback.
+- **Motion Distance**: Elements being elevated via hover (like cards or buttons) should move on the Y-axis by no more than `-2px` (`transform: translateY(-2px)`). Keep motions subtle; do not over-animate.
